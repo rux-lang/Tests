@@ -4,4 +4,8 @@ union Bits {
     asBytes: uint8[4]
 }
 
-type Word = Bits;
+// type Word = Bits;
+
+func Main() -> int32 {
+    return 0;
+}

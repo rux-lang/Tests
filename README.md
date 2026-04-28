@@ -1,13 +1,18 @@
-# Rux Laboratory
+# Rux Testing Packages
 
-Sandbox for development and testing Rux programming language. To build this package use command:
+Sandbox for development and testing Rux programming language. To build any of this packages use command in the corresponding folder.
 
 ```sh
 rux build
 ```
 
+// Each package contans some program for testing types, variables, functions of the Rux programming language.
+
 ```rux
-// Testing syntax highlighting in the Markdown file
-let value: int32 = 0x00ff;
-const Pi: float64 = 3.1415;
+func Test() -> int32 {
+	let value: int32 = 0x00ff;
+	const Pi: float64 = 3.1415;
+	// Other stuff
+	return 0;
+}
 ```
