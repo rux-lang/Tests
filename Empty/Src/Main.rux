@@ -1,8 +1,0 @@
-// func GetValue() -> int32 {
-//     return 42;
-// }
-
-// The simplest possible Rux program
-func Main() -> int32 {
-    return 0;
-}
