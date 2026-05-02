@@ -1,40 +1,60 @@
-@[Link("Kernel32.dll")]
-extern {
-    func WriteConsoleA(
-        consoleOutput: *any,
-        buffer: *const char8,
-        numberOfCharsToWrite: uint32,
-        numberOfCharsWritten: *uint32,
-        reserved: *any) -> bool32;
+// Attributes for import function from the library
+@[Import(lib: "Math.dll")]
+@[Import(lib: "Math.dll", symbol: "Sine")]
+@[Import(lib: "Math.dll", ordinal: 25)]
+@[Import(symbol: "Sine")]
+@[Import(ordinal: 25)]
 
-    func WriteConsoleW(
-        consoleOutput: *,
-        buffer: *const char16,
-        numberOfCharsToWrite: uint32,
-        numberOfCharsWritten: *uint32,
-        reserved: *any) -> bool32;
-}
+// Attributes for calling convention
+@[Call(.CDecl)]
+@[Call(.FastCall)]
+@[Call(.Naked)]
+@[Call(.Rux)]
+@[Call(.StdCall)]
+@[Call(.SysV)]
+@[Call(.ThisCall)]
+@[Call(.Win64)]
 
+// Example of using attributes for import and calling convention
+@[Call(.Win64)]
+@[Import(lib: "Math.dll", symbol: "Sine")]
+extern func Sin(x: float64) -> float64;
 
-@[Call(Std)]
-@[Link("Math.dll")]
+// Example of using multiple attributes for a bunch of functions
+@[Call(.CDecl)]
+@[Import(lib: "Math.dll")]
 extern {
     func Sin(x: float64) -> float64;
 
-    @[Symbol("Cosine")]
+    @[Import(symbol: "Cosine")]
     func Cos(x: float64) -> float64;
 
-    @[Symbol("Tangent")]
+    @[Import(ordinal: 25)]
     func Tan(x: float64) -> float64;
-
-    @[Ordinal(25)]
-    func Log(x: float64) -> float64;
 }
 
+// Example of using attributes for a Windows API function
+@[Call(.Win64)]
+@[Import(lib: "Kernel32.dll")]
+extern {
+    func WriteConsoleA(
+        consoleOutput: *opaque,
+        buffer: *const char8,
+        numberOfCharsToWrite: uint32,
+        numberOfCharsWritten: *uint32,
+        reserved: *opaque) -> bool32;
 
+    func WriteConsoleW(
+        consoleOutput: *opaque,
+        buffer: *const char16,
+        numberOfCharsToWrite: uint32,
+        numberOfCharsWritten: *uint32,
+        reserved: *opaque) -> bool32;
+}
 
-
-
+// Main entry point of the program
 func Main() -> int32 {
+    var ptr: *opaque = null;
+    ptr = &val;
     return 0;
 }
