@@ -1,0 +1,62 @@
+@[Import(lib: "Platform.dll")]
+extern {
+    func Exit(code: int32);
+
+    func MemAlloc(size: uint) -> *opaque;
+    func MemFree(ptr: *opaque);
+    func MemZero(ptr: *opaque, size: uint);
+
+    func Print(slice: char8[]);
+    func PrintLine(slice: char8[]);
+    func PrintCString(string: *const char8, length: uint);
+    func PrintPointer(format: char8[], pointer: *const opaque);
+    func PrintInt8(format: char8[], value: int8);
+    func PrintInt16(format: char8[], value: int16);
+    func PrintInt32(format: char8[], value: int32);
+    func PrintInt64(format: char8[], value: int64);
+    func PrintUint8(format: char8[], value: uint8);
+    func PrintUint16(format: char8[], value: uint16);
+    func PrintUint32(format: char8[], value: uint32);
+    func PrintUint64(format: char8[], value: uint64);
+    func PrintFloat32(format: char8[], value: float32);
+    func PrintFloat64(format: char8[], value: float64);
+    func PrintSliceBool8(format: char8[], slice: bool8[]);
+    func PrintSliceChar8(format: char8[], slice: char8[]);
+    func PrintSliceInt8(format: char8[], slice: int8[]);
+    func PrintSliceInt16(format: char8[], slice: int16[]);
+    func PrintSliceInt32(format: char8[], slice: int32[]);
+    func PrintSliceInt64(format: char8[], slice: int64[]);
+    func PrintSliceFloat32(format: char8[], slice: float32[]);
+    func PrintSliceFloat64(format: char8[], slice: float64[]);
+}
+
+func Main() -> int32 {    
+    // PrintInt64(1234567890);
+    // PrintLn();
+    // PrintFloat64(3.141592653589793);
+    // PrintLn();    
+    // var str: char8[] = "Hello, World!";
+    // PrintStr(str, str.len);    
+    // PrintLn();
+    // var ptr: *opaque = MemAlloc(64); 
+    // PrintPtr(ptr);
+    // MemFree(ptr);
+    // PrintLn();
+
+    // var s : char8[] = "Hello, Rux!";
+    // var c: char8 = c8'#';
+    // PrintCString(&s[3], 4u64);
+
+    // var ptr: *opaque = MemAlloc(64u64);
+    // var val: *uint64 = ptr as *uint64;
+    // PrintUint64("Pointer value: {}\n", *val);
+    // PrintPointer("{}\n", ptr );
+    // PrintPointer("{}\n", ptr + 1 );
+    // PrintPointer("{}\n", ptr + 2 );
+    // PrintPointer("{}\n", ptr + 3 );
+
+    var arr: int64[] = [1, 2, 3, 4, 5];
+    PrintSliceInt64("Slice: {}\n", arr);
+    PrintUint64("Slice length: {}\n", arr.length);
+    return 0i32;
+}
